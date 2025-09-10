@@ -19,7 +19,8 @@ class Product:
 
     def set_quantity(self, quantity):
         available_quantity = self.get_quantity()
-        self.quantity  = available_quantity - quantity
+        self.quantity  = available_quantity + quantity
+        #self.quantity = quantity
         if self.quantity == 0:
             self.deactivate()
 
@@ -47,6 +48,7 @@ class Product:
         elif quantity < 0:
             raise Exception("Positive value expected for quantity")
         else:
-            self.set_quantity(quantity)
+            available_stock = self.get_quantity()
+            self.quantity = available_stock - quantity
         total_price = quantity * self.price
         return total_price
