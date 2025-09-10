@@ -4,11 +4,13 @@ class Product:
             self.name = name
         else:
             raise Exception("Product name cant be blank")
+
         if price < 0 or quantity < 0:
             raise Exception("Price/Quantity need positive values")
         else:
             self.price = price
             self.quantity = quantity
+
         if quantity > 0:
             self.active = True
         else:
@@ -17,10 +19,10 @@ class Product:
     def get_quantity(self):
         return self.quantity
 
+
     def set_quantity(self, quantity):
         available_quantity = self.get_quantity()
         self.quantity  = available_quantity + quantity
-        #self.quantity = quantity
         if self.quantity == 0:
             self.deactivate()
 
@@ -43,6 +45,12 @@ class Product:
 
 
     def buy(self, quantity):
+        """
+        Buys a given quantity of the product
+        Updates the quantity of the product.
+        Returns the total price (float) of the purchase.
+        """
+
         if not self.is_active():
             raise Exception("Product out of stock!!!")
         elif quantity < 0:
