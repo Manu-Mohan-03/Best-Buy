@@ -49,6 +49,8 @@ class Product:
             raise Exception("Positive value expected for quantity")
         else:
             available_stock = self.get_quantity()
+            if quantity > available_stock:
+                raise Exception(f"Insufficient Stock for {self.name}!!!")
             self.quantity = available_stock - quantity
         total_price = quantity * self.price
         return total_price

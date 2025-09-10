@@ -9,7 +9,7 @@ class Store:
 
     def add_product(self, product):
         if type(product) != Product:
-            raise TypeError("Product is not yet created")
+            raise TypeError("Only products can be added")
         if self.product_list.count(product) == 0:
             self.product_list.append(product)
 
@@ -19,7 +19,7 @@ class Store:
             self.product_list.remove(product)
 
     def get_total_quantity(self):
-        total_quantity = 0.
+        total_quantity = 0
         for product in self.product_list:
             if type(product) == Product:
                 total_quantity += product.get_quantity()
@@ -36,7 +36,10 @@ class Store:
     def order(self, shopping_list):
         total_price = 0
         for product,quantity in shopping_list:
-            price = product.buy(quantity)
+            try:
+                price = product.buy(quantity)
+            except Exception as error:
+                raise Exception(error)
             total_price += price
         return total_price
 
