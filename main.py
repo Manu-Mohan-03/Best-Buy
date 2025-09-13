@@ -40,8 +40,6 @@ def list_products():
     products_numbered = enumerate(products,1)
     for number,product in products_numbered:
         print(number,". ", end="")
-        #print(f"{product.name}, "
-              #f"Price: €{product.price}, Quantity: {product.quantity}")
         product.show()
 
 
@@ -94,7 +92,7 @@ def quantity_prompt(item):
 def create_order():
     """Order Creation"""
     # initialize shopping cart
-    shopping_cart = []
+    shopping_cart = {}
     print("-----")
     list_products()
     item_list = best_buy.get_all_products()
@@ -106,8 +104,12 @@ def create_order():
         if item:
             quantity = quantity_prompt(item)
             if quantity:
-                shopping_cart.append((item,quantity))
-                print("Product added to list!")
+                new_quantity = quantity + shopping_cart.get(item,0)
+                if new_quantity > item.get_quantity():
+                    print(f"Not enough {item.name} in stock")
+                else:
+                    shopping_cart[item] = new_quantity
+                    print("Product added to list!")
         else:
             break
     if shopping_cart:

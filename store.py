@@ -39,7 +39,7 @@ class Store:
     def order(self, shopping_list):
         """To create a sales order"""
         total_price = 0
-        for product,quantity in shopping_list:
+        for product,quantity in shopping_list.items():
             try:
                 price = product.buy(quantity)
             except Exception as error:

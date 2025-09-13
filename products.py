@@ -46,10 +46,12 @@ class Product:
         self.active = True
 
     def deactivate(self):
+        """To set a product as inactive"""
         self.active = False
 
     def show(self):
-        print(f"{self.name}, Price: {self.price}, "
+        """To print a product withs its price and stock"""
+        print(f"{self.name}, Price: €{self.price}, "
               f"Quantity: {self.quantity}")
 
     def buy(self, required_quantity):
