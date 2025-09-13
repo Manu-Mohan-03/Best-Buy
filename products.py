@@ -25,13 +25,17 @@ class Product:
 
     def set_quantity(self, quantity):
         """To set new quantity and to set inactive if stock goes below zero """
-        available_quantity = self.get_quantity()
-        self.quantity  = available_quantity + quantity
+        self.quantity  = quantity
         if self.quantity <= 0:
             self.deactivate()
         else:
             self.activate()
 
+    def add_quantity(self, quantity):
+        """To increase the stock of a material"""
+        current_stock = self.get_quantity()
+        new_stock = current_stock + quantity
+        self.set_quantity(new_stock)
 
     def is_active(self):
         """To check if a product is active"""
