@@ -8,7 +8,6 @@ product_list = [Product("MacBook Air M2", price=1450, quantity=100),
                 Product("Bose QuietComfort Earbuds", price=250, quantity=500),
                 Product("Google Pixel 7", price=500, quantity=250),
             ]
-
 best_buy = Store(product_list)
 
 
@@ -41,8 +40,9 @@ def list_products():
     products_numbered = enumerate(products,1)
     for number,product in products_numbered:
         print(number,". ", end="")
-        print(f"{product.name}, "
-              f"Price: €{product.price}, Quantity: {product.quantity}")
+        #print(f"{product.name}, "
+              #f"Price: €{product.price}, Quantity: {product.quantity}")
+        product.show()
 
 
 def show_total_items():

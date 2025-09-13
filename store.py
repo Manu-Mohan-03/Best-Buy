@@ -14,7 +14,6 @@ class Store:
         if self.product_list.count(product) == 0:
             self.product_list.append(product)
 
-
     def remove_product(self, product):
         """To remove product from the store"""
         if self.product_list.count(product) > 0:
